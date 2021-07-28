@@ -5,14 +5,13 @@ import { getAllTodos, getTodo, createTodo, updateTodo, deleteTodo } from "../con
 const router = Router();
 
 // get all todos
-router.get("/todos", getAllTodos);
-// get id todo
-router.get("/todos/:id", getTodo);
+router.get("/all", getAllTodos);
 // post create todo
-router.post("/todos", restrict, createTodo);
+router.post("/new", restrict, createTodo);
 // put update todo
-router.put("/todos/:id", restrict, updateTodo);
+router.put("/update/:id", restrict, updateTodo);
 // delete todo
-router.delete("/todos/:id", restrict, deleteTodo);
-
+router.delete("/delete/:id", restrict, deleteTodo);
+// get id todo
+router.get("/:id", getTodo);
 export default router;
