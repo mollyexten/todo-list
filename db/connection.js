@@ -16,11 +16,11 @@ mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 }).catch(error =>
-  console.error("Error connecting to MondoDB", error.message)
+  console.error("Error connecting to MongoDB", error.message)
 );
 
 mongoose.connection.on("disconnected", () =>
-  console.log("Disconnectioned from MondoDB")
+  console.log("Disconnectioned from MongoDB")
 );
 
 mongoose.connection.on("error", (error) =>
