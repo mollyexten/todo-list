@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/user.js";
 
-const SALT_ROUNDS = 11;
+const SALT_ROUNDS = process.env.SALT_ROUNDS || 11;
 const TOKEN_KEY = process.env.TOKEN_KEY || "123456789";
 
 const today = new Date();
@@ -15,7 +15,7 @@ export const signUp = async (req, res) => {
     // destructure req.body
     const { username, email, password } = req.body
     // create password digest
-    const password_digest = await bcrypt.hash(password, SALT_ROUNDS);
+    const password_digest = await bcrypt.hash(password, parseInt(SALT_ROUNDS));
     const user = new User({
       email,
       username,
