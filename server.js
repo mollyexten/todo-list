@@ -4,6 +4,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import db from "./db/connection.js";
 
 const app = express();
 const PORT = process.env.PORT || 4567;
@@ -17,4 +18,7 @@ app.use(morgan("dev"));
 
 app.get("/", (req, res) => res.send("<h1>Let's get stuff done!</h1>"))
 
-app.listen(PORT, console.log(`Connected to port: ${PORT}`));
+db.on("connected", () => {
+  console.log("Connected to MongoDB");
+  app.listen(PORT, console.log(`Connected to port: ${PORT}`));
+});
