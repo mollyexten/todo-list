@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 
 const MONGODB_URI =
-  PROD_MONGODB || "mongodb://127.0.0.1:27017/todoAuthDatabase";
-  // process.env.PROD_MONGODB || "mongodb://127.0.0.1:27017/todoAuthDatabase";
+  process.env.PROD_MONGODB || "mongodb://127.0.0.1:27017/todoAuthDatabase";
 
 // SET TO FALSE WHEN NOT DEBUGGING - shows all information (username and password)
 mongoose.set("debug", true);
