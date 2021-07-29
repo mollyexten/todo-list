@@ -38,3 +38,12 @@ export const verify = async () => {
     throw e;
   }
 }
+
+export const signOut = async () => {
+  try {
+    localStorage.removeItem("token");
+    return true;
+  } catch (e) {
+    throw e;
+  }
+}

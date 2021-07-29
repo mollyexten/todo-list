@@ -12,12 +12,12 @@ export default function Home(props) {
     fetchTodos()
   }, [])
 
-  const todoListJSX = todos.map(todo => (
-    <div>{todo.name}</div>
+  const todoListJSX = todos.map((todo, index) => (
+    <div key={index}>{todo.name}</div>
   ))
 
   return (
-    <Layout user={props.user}>
+    <Layout setUser={props.setUser} user={props.user}>
       {todoListJSX}
       </Layout>
   )

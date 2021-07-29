@@ -8,3 +8,12 @@ export const getAllTodos = async () => {
     throw e;
   }
 }
+
+export const createTodo = async (input) => {
+  try {
+    const res = await api.post("/todo/new", input)
+    return res.data
+  } catch (e) {
+    throw e;
+  }
+}
