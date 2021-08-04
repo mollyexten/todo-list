@@ -11,6 +11,7 @@ export const getAllTodos = async () => {
 
 export const createTodo = async (input) => {
   try {
+    console.log(input)
     const res = await api.post("/todo/new", input)
     return res.data
   } catch (e) {

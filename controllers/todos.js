@@ -1,11 +1,23 @@
 import Todo from "../models/task.js"
 
+// This will get all todos
+// export const getAllTodos = async (req, res) => {
+//   try {
+//     const todos = await Todo.find({})
+//     res.json(todos)
+//   } catch (e) {
+//     res.status(404).json({error: e.message})
+//   }
+// }
+
 export const getAllTodos = async (req, res) => {
   try {
-    const todos = await Todo.find({})
-    res.json(todos)
+    // console.log(req)
+    // const todos = await Todo.find({ userId: req.user })
+    const todos = await Todo.find({ userId: req.body.userId })
+    res.send(todos);
   } catch (e) {
-    res.status(404).json({error: e.message})
+    res.status(500).json({error: e.message})
   }
 }
 

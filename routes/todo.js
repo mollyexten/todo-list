@@ -5,7 +5,7 @@ import { getAllTodos, getTodo, createTodo, updateTodo, deleteTodo } from "../con
 const router = Router();
 
 // get all todos
-router.get("/all", getAllTodos);
+router.get("/all", restrict, getAllTodos);
 // post create todo
 router.post("/new", restrict, createTodo);
 // put update todo

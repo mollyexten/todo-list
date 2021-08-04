@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { signOut } from "../../services/users";
 
 export default function Navbar(props) {
+  const history = useHistory();
   const handleSignOut = () => {
+    history.push("/sign-in")
     signOut();
     props.setUser(null)
   }
