@@ -55,7 +55,13 @@ export default function NewTodo(props) {
           <label>Complete</label>
           <input id="complete" value={input.complete} onChange={handleChange} />
           <br />
-          <button>Create Todo</button>
+          <button>
+            {id ? (
+              'Update Todo'
+            ) : (
+              'Create Todo'
+            )}
+          </button>
         </form>
       </div>
     </Layout>
