@@ -25,6 +25,7 @@ export const getTodo = async (req, res) => {
   try {
     const { id } = req.params;
     const todo = await Todo.findById(id)
+    console.log(todo)
     if (todo) {
       res.json(todo)
     }
@@ -44,12 +45,13 @@ export const createTodo = async (req, res) => {
 }
 
 export const updateTodo = async (req, res) => {
-  try {
-
-  } catch (e) {
-    res.status(500)
-    res.status(500).json({ error: e.message })
-  }
+  const { id } = req.params;
+  const todo = await Todo.findByIdAndUpdate(id, req.body, (error, content) => {
+    if (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  })
+  res.status(200).json(todo)
 }
 
 export const deleteTodo = async (req, res) => {

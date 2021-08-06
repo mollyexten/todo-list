@@ -13,5 +13,5 @@ router.put("/update/:id", restrict, updateTodo);
 // delete todo
 router.delete("/delete/:id", restrict, deleteTodo);
 // get id todo
-router.get("/:id", getTodo);
+router.get("/todo/:id", restrict, getTodo);
 export default router;

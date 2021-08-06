@@ -1,15 +1,26 @@
 import Layout from "../../components/Layout";
-import { useState } from "react"
-import { useHistory } from "react-router"
-import { createTodo } from "../../services/todos"
+import { useEffect, useState } from "react"
+import { useParams, useHistory } from "react-router"
+import { createTodo, getOneTodo, updateTodo } from "../../services/todos"
 
 export default function NewTodo(props) {
   const history = useHistory();
+  const { id } = useParams();
   const [input, setInput] = useState({
     name: "",
     due_date: "",
     complete: ""
   })
+
+  useEffect(() => {
+    const fillInForm = async (id) => {
+      const res = await getOneTodo(id);
+      setInput(res)
+    }
+    if (id) {
+      fillInForm(id);
+    }
+  }, [id])
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -21,7 +32,12 @@ export default function NewTodo(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createTodo(input);
+    if (id) {
+      const update = await updateTodo(id, input)
+      console.log(update)
+    } else {
+      await createTodo(input);
+    }
     history.push("/")
   }
 

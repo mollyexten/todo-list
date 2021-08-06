@@ -24,6 +24,9 @@ function App() {
             <NewTodo setUser={setUser} user={user} />
           </Route>
           {/* Route for posting/editing a todo */}
+          <Route path="/edit-todo/:id">
+            <NewTodo setUser={setUser} user={user} />
+          </Route>
         </>
       )}
       {!user && (
